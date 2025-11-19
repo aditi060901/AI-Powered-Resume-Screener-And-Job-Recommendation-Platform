@@ -1,0 +1,30 @@
+# ---- Web Framework ----
+flask
+flask-cors
+gunicorn
+
+# ---- MongoDB ----
+pymongo
+dnspython
+
+# ---- AWS S3 ----
+boto3
+
+# ---- NLP / Resume Parsing ----
+spacy
+sentence-transformers
+numpy
+scikit-learn
+
+# ---- PDF / DOCX Processing ----
+pdfplumber
+python-docx
+
+# ---- Utils ----
+requests
+python-dotenv
+
+# ---- For Kubernetes Health Checks ----
+werkzeug
+
+pymongo[srv]

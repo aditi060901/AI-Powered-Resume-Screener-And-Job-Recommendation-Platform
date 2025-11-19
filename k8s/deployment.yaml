@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resume-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resume-backend
+  template:
+    metadata:
+      labels:
+        app: resume-backend
+    spec:
+      containers:
+      - name: resume-backend
+        image: aditi060901/resume-ai-backend:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MONGO_URI
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: uri
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-secret
+              key: access
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-secret
+              key: secret
+        - name: AWS_BUCKET_NAME
+          valueFrom:
+            secretKeyRef:
+              name: aws-secret
+              key: bucket-name
+        - name: AWS_REGION
+          valueFrom: 
+            secretKeyRef:
+              name: aws-secret
+              key: region
